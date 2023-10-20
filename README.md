@@ -1,3 +1,3 @@
 # RockPaperSciccorsOdin
 
-Simple Rock Paper and Sccisors in JavaScript UI is planned
+Simple Rock Paper and Scissors in JavaScript UI is planned
