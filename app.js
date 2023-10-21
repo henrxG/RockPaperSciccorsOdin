@@ -1,8 +1,9 @@
 let Papier = 1;
 let Stein = 2;
 let Schere = 3;
-let playerSelection = prompt("Stein Papier oder Schere?")
-let computerSelection=getComputerChoice();
+let playerSelection;
+let computerSelection;
+let result;
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -39,5 +40,13 @@ function playRound(playerSelection, computerSelection) {
     return "Unentschieden";
   }
 }
+function game(result) {
+  for (let i = 0; i < 5; i++) {
+    playerSelection=prompt("Stein Papier oder Schere?");
+    computerSelection=getComputerChoice();
+    result=playRound(playerSelection, computerSelection);
+    console.log(result);
 
-console.log(playRound());
+  }
+}
+game();
