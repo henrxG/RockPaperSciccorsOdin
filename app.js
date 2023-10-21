@@ -1,6 +1,6 @@
-let Paper = 1;
-let Rock = 2;
-let Scissors = 3;
+let Papier = 1;
+let Stein = 2;
+let Schere = 3;
 let playerSelection = prompt("Rock, Paper or Scissors?")
 let computerSelection=getComputerChoice();
 
