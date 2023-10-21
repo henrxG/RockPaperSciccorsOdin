@@ -18,7 +18,25 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === "Rock" && computerSelection === "Paper") {
-    return "You lose! Paper beats Rock";
+    return "Du verlierst Papier schlägt Stein";
+  }
+  if(playerSelection === "Paper" && computerSelection === "Rock") {
+    return "Du gewinnst Papier schlägt Stein";
+  }
+  if(playerSelection === "Scissors" && computerSelection === "Rock") {
+    return "Du verlierst Stein schlägt Schere";
+  }
+  if(playerSelection === "Rock" && computerSelection === "Scissors") {
+    return "Du gewinnst Stein schlägt Schere";
+  }
+  if(playerSelection === "Paper" && computerSelection === "Scissors") {
+    return "Du verlierst Schere schlägt Papier";
+  }
+  if(playerSelection === "Scissors" && computerSelection === "Paper") {
+    return "Du gewinnst Schere schlägt Papier";
+  }
+  if(playerSelection === computerSelection) {
+    return "Unentschieden";
   }
 }
 
