@@ -1,3 +1,3 @@
 # RockPaperSciccorsOdin
 
-Simple Rock Paper and Scissors in JavaScript UI is planned
+Einfaches Schere Stein Papier Spiel in JavaScript aus dem [Odin Projekt](https://www.theodinproject.com)
