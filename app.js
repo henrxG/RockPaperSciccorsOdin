@@ -1,38 +1,38 @@
 let Papier = 1;
 let Stein = 2;
 let Schere = 3;
-let playerSelection = prompt("Rock, Paper or Scissors?")
+let playerSelection = prompt("Stein Papier oder Schere?")
 let computerSelection=getComputerChoice();
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
   if (randomNumber === 1) {
-    return "Scissors";
+    return "Schere";
   } else if (randomNumber === 2) {
-    return "Paper";
+    return "Papier";
   } else if (randomNumber === 3) {
-    return "Rock";
+    return "Stein";
   }
 }
 
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === "Rock" && computerSelection === "Paper") {
+  if (playerSelection === "Stein" && computerSelection === "Papier") {
     return "Du verlierst Papier schlägt Stein";
   }
-  if(playerSelection === "Paper" && computerSelection === "Rock") {
+  if(playerSelection === "Papier" && computerSelection === "Stein") {
     return "Du gewinnst Papier schlägt Stein";
   }
-  if(playerSelection === "Scissors" && computerSelection === "Rock") {
+  if(playerSelection === "Schere" && computerSelection === "Stein") {
     return "Du verlierst Stein schlägt Schere";
   }
-  if(playerSelection === "Rock" && computerSelection === "Scissors") {
+  if(playerSelection === "Stein" && computerSelection === "Schere") {
     return "Du gewinnst Stein schlägt Schere";
   }
-  if(playerSelection === "Paper" && computerSelection === "Scissors") {
+  if(playerSelection === "Papier" && computerSelection === "Schere") {
     return "Du verlierst Schere schlägt Papier";
   }
-  if(playerSelection === "Scissors" && computerSelection === "Paper") {
+  if(playerSelection === "Schere" && computerSelection === "Papier") {
     return "Du gewinnst Schere schlägt Papier";
   }
   if(playerSelection === computerSelection) {
