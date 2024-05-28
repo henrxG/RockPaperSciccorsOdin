@@ -1,52 +1,52 @@
-let Papier = 1;
-let Stein = 2;
-let Schere = 3;
-let playerSelection;
-let computerSelection;
-let result;
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound() {
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice();
+
+    console.log("Du hast asuwgewählt:", humanChoice);
+    console.log("Der COmputer hat asugewählt:", computerChoice);
+
+    if (humanChoice === computerChoice) {
+        console.log("Unentschieden!");
+    } else if (
+        (humanChoice === "stein" && computerChoice === "schere") ||
+        (humanChoice === "papier" && computerChoice === "stein") ||
+        (humanChoice === "schere" && computerChoice === "papier")
+    ) {
+        console.log("Du hast gewonnen!");
+        humanScore++;
+    } else {
+        console.log("Der Computer hat gewonnen!");
+        computerScore++;
+    }
+    console.log("Dein score: " + humanScore);
+    console.log("Computer score: " + computerScore);
+}
+
+function playGame() {
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+}
 
 function getComputerChoice() {
-  let randomNumber = Math.floor(Math.random() * 3) + 1;
-  if (randomNumber === 1) {
-    return "Schere";
-  } else if (randomNumber === 2) {
-    return "Papier";
-  } else if (randomNumber === 3) {
-    return "Stein";
-  }
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
+    if (randomNumber === 1) {
+        return "rock";
+    } else if (randomNumber === 2) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
 }
 
-
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === "Stein" && computerSelection === "Papier") {
-    return "Du verlierst Papier schlägt Stein";
-  }
-  if(playerSelection === "Papier" && computerSelection === "Stein") {
-    return "Du gewinnst Papier schlägt Stein";
-  }
-  if(playerSelection === "Schere" && computerSelection === "Stein") {
-    return "Du verlierst Stein schlägt Schere";
-  }
-  if(playerSelection === "Stein" && computerSelection === "Schere") {
-    return "Du gewinnst Stein schlägt Schere";
-  }
-  if(playerSelection === "Papier" && computerSelection === "Schere") {
-    return "Du verlierst Schere schlägt Papier";
-  }
-  if(playerSelection === "Schere" && computerSelection === "Papier") {
-    return "Du gewinnst Schere schlägt Papier";
-  }
-  if(playerSelection === computerSelection) {
-    return "Unentschieden";
-  }
+function getHumanChoice() {
+    let input = prompt("Wähle zwischen Schere, Stein und Papier!").toLowerCase();
+    return input;
 }
-function game(result) {
-  for (let i = 0; i < 5; i++) {
-    playerSelection=prompt("Stein Papier oder Schere?");
-    computerSelection=getComputerChoice();
-    result=playRound(playerSelection, computerSelection);
-    console.log(result);
 
-  }
-}
-game();
+playGame();
