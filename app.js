@@ -4,51 +4,55 @@ let Schere = 3;
 let playerSelection;
 let computerSelection;
 let result;
-
-function getComputerChoice() {
-  let randomNumber = Math.floor(Math.random() * 3) + 1;
-  if (randomNumber === 1) {
-    return "Schere";
-  } else if (randomNumber === 2) {
-    return "Papier";
-  } else if (randomNumber === 3) {
-    return "Stein";
-  }
-}
-
-
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === "Stein" && computerSelection === "Papier") {
-    return "Du verlierst Papier schlägt Stein";
-  }
-  if(playerSelection === "Papier" && computerSelection === "Stein") {
-    return "Du gewinnst Papier schlägt Stein";
-  }
-  if(playerSelection === "Schere" && computerSelection === "Stein") {
-    return "Du verlierst Stein schlägt Schere";
-  }
-  if(playerSelection === "Stein" && computerSelection === "Schere") {
-    return "Du gewinnst Stein schlägt Schere";
-  }
-  if(playerSelection === "Papier" && computerSelection === "Schere") {
-    return "Du verlierst Schere schlägt Papier";
-  }
-  if(playerSelection === "Schere" && computerSelection === "Papier") {
-    return "Du gewinnst Schere schlägt Papier";
-  }
-  if(playerSelection === computerSelection) {
-    return "Unentschieden";
-  }
-}
+let playerScore = 0;
+let computerScore = 0;
 
 const schere = document.querySelector('#schere');
 const papier = document.querySelector('#papier');
 const stein = document.querySelector('#stein');
 
+function getComputerChoice() {
+  const choices = ['Schere', 'Stein', 'Papier'];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
+}
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "Unentschieden";
+  } else if (
+    (playerSelection === "Schere" && computerSelection === "Papier") ||
+    (playerSelection === "Papier" && computerSelection === "Stein") ||
+    (playerSelection === "Stein" && computerSelection === "Schere")
+  ) {
+    playerScore++;
+    return "Du gewinnst! " + playerSelection + " schlägt " + computerSelection;
+  } else {
+    computerScore++;
+    return "Du verlierst! " + computerSelection + " schlägt " + playerSelection;
+  }
+}
+
 function game(playerSelection) {
   let computerSelection = getComputerChoice();
   let result = playRound(playerSelection, computerSelection);
-  console.log(result);
+  const resultDiv = document.createElement('div');
+  resultDiv.textContent = result;
+  document.body.appendChild(resultDiv);
+
+  const scoreDiv = document.createElement('div');
+  scoreDiv.textContent = `Spieler: ${playerScore}, Computer: ${computerScore}`;
+  document.body.appendChild(scoreDiv);
+
+  if (playerScore >= 5) {
+    alert("Du hast gewonnen!");
+    playerScore = 0;
+    computerScore = 0;
+  } else if (computerScore >= 5) {
+    alert("Der Computer hat gewonnen!");
+    playerScore = 0;
+    computerScore = 0;
+  }
 }
 
 schere.addEventListener('click', () => {
